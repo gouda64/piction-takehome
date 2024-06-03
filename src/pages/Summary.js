@@ -1,11 +1,13 @@
 import CustomAppBar from "../components/CustomAppBar";
 import {
     Typography,
-    Button,
     Box,
 } from "@mui/material";
+import { useSelector } from 'react-redux';
 
 export default function Summary() {
+    const user = useSelector((state) => state.user);
+
     return (
         <Box className="flex-layout">
             <CustomAppBar back="/issue"/>

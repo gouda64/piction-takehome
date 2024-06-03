@@ -3,6 +3,8 @@ import {createTheme, ScopedCssBaseline, ThemeProvider} from "@mui/material";
 import CustomRoutes from "./CustomRoutes";
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs'
+import store from './redux/store';
+import { Provider } from 'react-redux';
 
 const theme = createTheme({
   typography: {
@@ -60,13 +62,15 @@ const theme = createTheme({
 
 function App() {
   return (
-    <LocalizationProvider dateAdapter={AdapterDayjs}>
-      <ThemeProvider theme={theme}>
-          <ScopedCssBaseline>
-            <CustomRoutes />
-          </ScopedCssBaseline>
-      </ThemeProvider>
-    </LocalizationProvider>
+    <Provider store={store}>
+      <LocalizationProvider dateAdapter={AdapterDayjs}>
+        <ThemeProvider theme={theme}>
+            <ScopedCssBaseline>
+              <CustomRoutes />
+            </ScopedCssBaseline>
+        </ThemeProvider>
+      </LocalizationProvider>
+    </Provider>
   );
 }
 

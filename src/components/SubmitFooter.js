@@ -11,7 +11,11 @@ export default function SubmitFooter(props) {
         <Box sx={{mb: "5rem", p: "2rem"}}>
             <Button variant="outlined" color="secondary" 
                 sx={{ml: "auto", display: "block", width: "40%"}}
-                onClick={() => {navigate(props.nav)}}>
+                onClick={() => {
+                    navigate(props.nav)
+                    if (props.onClick) props.onClick();
+                }}
+                disabled={props.checkDisabled ? props.checkDisabled() : false}>
                 Submit
             </Button>
         </Box>

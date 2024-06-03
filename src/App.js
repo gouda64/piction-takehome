@@ -6,6 +6,22 @@ const theme = createTheme({
   typography: {
     fontFamily: ['Lato', 'sans-serif'].join(','),
   },
+  components: {
+    MuiButton: {
+      styleOverrides: {
+        outlined: {
+          borderColor: "lightgray",
+          padding: "0.5rem 1rem",
+          borderRadius: "0.75rem",
+          textTransform: "none",
+          "&:hover": {
+            backgroundColor: "transparent",
+            borderColor: "#0075FF",
+          },
+        },
+      },
+    },
+  },
   palette: {
     primary: {
       main: '#fff',

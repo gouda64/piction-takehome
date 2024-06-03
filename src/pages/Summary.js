@@ -23,14 +23,17 @@ export default function Summary() {
                     Issue: ${user.issue}`,
             preamble: `Summarize, in paragraph form, healthcare information about a patient.
                         Discuss every detail provided, include whether the patient filled out the form themselves.
-                        Be concise.`,
+                        Interpret the patient's issue concisely.
+                        Do not go over 5 sentences.`,
+            frequencyPenalty: 0.5,
         });
 
         setSummary(response.text);
     }
 
+    // TODO: calls twice
     useEffect(() => {
-        setSummary((state) => "");
+        // console.log("calling!");
         newSummary();
     }, [user]);
 

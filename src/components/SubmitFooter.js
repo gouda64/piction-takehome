@@ -12,8 +12,10 @@ export default function SubmitFooter(props) {
             <Button variant="outlined" color="secondary" 
                 sx={{ml: "auto", display: "block", width: "40%"}}
                 onClick={() => {
-                    navigate(props.nav)
-                    if (props.onClick) props.onClick();
+                    setTimeout(() => {
+                        navigate(props.nav)
+                        if (props.onClick) props.onClick();
+                    }, 300);
                 }}
                 disabled={props.checkDisabled ? props.checkDisabled() : false}>
                 Submit

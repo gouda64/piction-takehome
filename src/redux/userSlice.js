@@ -2,10 +2,10 @@ import { createSlice } from '@reduxjs/toolkit';
 import dayjs from 'dayjs';
 
 const initialState = {
-    forUser: false, //false,
-    name: "Bob",
-    dob: new dayjs("1990-01-01"),
-    issue: "I have a massive headache",
+    forUser: true,
+    name: "",
+    dob: null,
+    issue: "",
 }
 
 const userSlice = createSlice({

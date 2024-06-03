@@ -15,6 +15,13 @@ export default function Main() {
     const dispatch = useDispatch();
     const navigate = useNavigate();
 
+    const nextPage = (forUser) => {
+        setTimeout(() => {
+            dispatch(setForUser(forUser));
+            navigate("/name");
+        }, 300);
+    }
+
     return (
         <Box className="flex-layout">
             <CustomAppBar/>
@@ -31,20 +38,14 @@ export default function Main() {
                     <Button 
                         variant="outlined" 
                         color="secondary"
-                        onClick={() => {
-                            dispatch(setForUser(true));
-                            navigate("/name");
-                        }}
+                        onClick={() => nextPage(true)}
                     >
                         Me
                     </Button>
                     <Button 
                         variant="outlined"
                         color="secondary"
-                        onClick={() => {
-                            dispatch(setForUser(false));
-                            navigate("/name");
-                        }}
+                        onClick={() => nextPage(false)}
                     >
                         Someone else
                     </Button>

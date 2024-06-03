@@ -17,17 +17,16 @@ export default function Summary() {
     const newSummary = async () => {  
         const stream = await cohere.chatStream({
             model: "command-r-plus",
-            message: `Who filled out the form: ${user.forUser ? "Patient being discussed" : "Someone else"} 
-                    Name: ${user.name} 
-                    Date of Birth: ${user.dob ? user.dob.format("YYYY-MM-DD") : "N/A"} 
-                    Issue: ${user.issue} `
-            ,
+            message: `Who filled out the form: ${user.forUser ? "Patient being discussed" : "Someone else"}\n 
+                    Name: ${user.name}\n
+                    Date of Birth: ${user.dob ? user.dob.format("YYYY-MM-DD") : "N/A"}\n
+                    Issue: ${user.issue}`,
             preamble: `Summarize, in paragraph form, healthcare information about a patient.
                         Discuss every detail provided, include whether the patient filled out the form themselves.
                         Be concise.`,
             temperature: 0.3,
-            stream: true,
-        })
+            frequencyPenalty: 1,
+        });
     
         for await (const chat of stream) {
             if (chat.eventType === "text-generation") {

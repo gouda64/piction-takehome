@@ -15,7 +15,7 @@ export default function Summary() {
     const [summary, setSummary] = useState("");
 
     const newSummary = async () => {  
-        const stream = await cohere.chatStream({
+        const response = await cohere.chat({
             model: "command-r-plus",
             message: `Who filled out the form: ${user.forUser ? "Patient being discussed" : "Someone else"}\n 
                     Name: ${user.name}\n
@@ -24,16 +24,9 @@ export default function Summary() {
             preamble: `Summarize, in paragraph form, healthcare information about a patient.
                         Discuss every detail provided, include whether the patient filled out the form themselves.
                         Be concise.`,
-            temperature: 0.3,
-            frequencyPenalty: 1,
         });
-    
-        for await (const chat of stream) {
-            if (chat.eventType === "text-generation") {
-                console.log(chat.text);
-                setSummary((state) => state + chat.text);
-            }
-        }
+
+        setSummary(response.text);
     }
 
     useEffect(() => {

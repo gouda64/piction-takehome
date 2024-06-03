@@ -1,19 +1,28 @@
 import CustomAppBar from "../components/CustomAppBar";
 import {
     Typography,
-    Stack,
-    Button,
     Box,
 } from "@mui/material";
+import {
+    DatePicker,
+} from "@mui/x-date-pickers"
+import SubmitFooter from "../components/SubmitFooter";
 
 export default function Birthday() {
+    const name = "todo";
+
     return (
         <Box className="flex-layout">
-            <CustomAppBar/>
+            <CustomAppBar back="/name"/>
 
-            <Box sx={{mb: "7rem", p: "2rem"}}>
-                <Button variant="outlined" color="secondary">Submit</Button>
+            <Box sx={{my: "auto", px: "4rem", width: "100%"}} align="center">
+                <Typography variant="h5" sx={{mb: "2rem"}}>
+                    Great to meet you, {name}! What's your date of birth?
+                </Typography>
+                <DatePicker id="dob" sx={{width: "75%"}}/>
             </Box>
+
+            <SubmitFooter nav="/issue" />
         </Box>
     );
 }

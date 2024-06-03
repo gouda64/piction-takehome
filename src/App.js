@@ -1,6 +1,8 @@
 import './App.css';
 import {createTheme, ScopedCssBaseline, ThemeProvider} from "@mui/material";
 import CustomRoutes from "./CustomRoutes";
+import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
+import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs'
 
 const theme = createTheme({
   typography: {
@@ -17,6 +19,17 @@ const theme = createTheme({
           "&:hover": {
             backgroundColor: "transparent",
             borderColor: "#0075FF",
+          },
+        },
+      },
+    },
+    MuiOutlinedInput: {
+      styleOverrides: {
+        root: {
+          borderRadius: "0.75rem",
+          "&.Mui-focused .MuiOutlinedInput-notchedOutline": {
+            borderColor: "#0075FF",
+            borderWidth: "1px",
           },
         },
       },
@@ -47,11 +60,13 @@ const theme = createTheme({
 
 function App() {
   return (
+    <LocalizationProvider dateAdapter={AdapterDayjs}>
       <ThemeProvider theme={theme}>
-        <ScopedCssBaseline>
-          <CustomRoutes />
-        </ScopedCssBaseline>
-    </ThemeProvider>
+          <ScopedCssBaseline>
+            <CustomRoutes />
+          </ScopedCssBaseline>
+      </ThemeProvider>
+    </LocalizationProvider>
   );
 }
 

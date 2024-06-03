@@ -5,10 +5,13 @@ import {
     Button,
     Box,
 } from "@mui/material";
+import { useNavigate } from "react-router-dom";
 
 import pictionLogo from "../assets/piction-logo.png";
 
 export default function Main() {
+    const navigate = useNavigate();
+
     return (
         <Box className="flex-layout">
             <CustomAppBar/>
@@ -22,12 +25,13 @@ export default function Main() {
                 </Typography>
                 <Stack direction="column" spacing={2} sx={{pl: "60%"}}>
                     <Button variant="outlined" color="secondary"
-                        onClick={() => {
-                            
-                        }}>
+                        onClick={() => {navigate("/name")}}>
                         Me
                     </Button>
-                    <Button variant="outlined" color="secondary">Someone else</Button>
+                    <Button variant="outlined" color="secondary"
+                        onClick={() => {navigate("/name")}}>
+                        Someone else
+                    </Button>
                 </Stack>
             </Box>
         </Box>
